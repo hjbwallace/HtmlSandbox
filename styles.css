@@ -1,0 +1,48 @@
+:root {
+  --breakpoint-tablet: 768px;
+  --breakpoint-mobile: 480px;
+}
+
+.image-content-block {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "image content";
+  align-items: center; /* vertical centering */
+  border: green 1px solid;
+}
+
+.image-content-block-right {
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "content image";
+}
+
+.image-content-block-image {
+  grid-area: image;
+  object-fit: cover; /* or contain */
+  width: 100%;
+  /* min-height: 100px; */
+  height: 100%;
+  border: red 1px solid;
+}
+
+.image-content-block-content {
+  grid-area: content;
+  padding: 20px;
+  border: blue 1px solid;
+}
+
+/* Can't use variables in media queries. */
+@media (max-width: 480px) {
+  .image-content-block {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .image-content-block-image {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .image-content-block-content {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
