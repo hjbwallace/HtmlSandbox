@@ -3,6 +3,19 @@
   --breakpoint-mobile: 480px;
 }
 
+body {
+  background-color: #e7e7e7;
+  font-family: Verdana, sans-serif;
+}
+
+section {
+  background-color: white;
+  margin: 1rem 0px;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 .image-content-block {
   display: grid;
   grid-template-columns: 1fr 2fr;
