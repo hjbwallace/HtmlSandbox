@@ -46,6 +46,19 @@ section {
   border: blue 1px solid;
 }
 
+.image-content-block-content-heading {
+  display: flex;
+  align-items: center;
+}
+
+.image-content-block-content-heading img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  display: inline-block;
+  object-fit: cover;
+}
+
 /* Can't use variables in media queries. */
 @media (max-width: 480px) {
   .image-content-block {
