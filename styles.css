@@ -60,7 +60,7 @@ section {
 }
 
 /* Can't use variables in media queries. */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .image-content-block {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
