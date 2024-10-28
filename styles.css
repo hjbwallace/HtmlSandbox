@@ -163,10 +163,6 @@ section {
   background-color: #f0f0f0;
 }
 
-.fancy-table :first-child {
-  font-weight: bold;
-}
-
 .fancy-table-entry {
   display: grid;
   grid-row: 1 / -1;
@@ -175,18 +171,60 @@ section {
 
 .fancy-table-entry div {
   padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
-.fancy-table-entry :first-child:not(:empty) {
+.fancy-table-entry:not(.fancy-table-labels) > :first-child {
   background: lightcoral;
   border-radius: 1rem;
   margin: 10px;
-  margin-left: 0;;
+  margin-left: 0;
   font-weight: bold;
 }
 
-.fancy-table-entry :not(:first-child):nth-child(odd) {
-  background-color: lightblue;
+.fancy-table-entry label {
+  display: none;
+}
+
+.fancy-table-labels {
+  font-weight: bold;
+}
+
+@media not (max-width: 768px) {
+  .fancy-table-entry :not(:first-child):nth-child(odd) {
+    background-color: lightblue;
+  }
+}
+
+@media (max-width: 768px) {
+  .fancy-table {
+    display: block;
+    background-color: initial;
+  }
+
+  .fancy-table-entry label {
+    display: flex;
+    width: 125px;
+    font-weight: bold;
+  }
+
+  .fancy-table-entry {
+    background-color: lightgoldenrodyellow;
+    margin: 10px 0;
+  }
+
+  .fancy-table-entry div {
+    padding: 0px 10px;
+  }
+
+  .fancy-table-entry > :first-child:not(:empty) {
+    background: initial;
+  }
+
+  .fancy-table-labels {
+    display: none;
+  }
 }
 
 /*#endregion*/
