@@ -20,6 +20,23 @@ function initialiseSliders() {
 
 function initialiseSlider(sliderElement) {
   const slides = sliderElement.querySelectorAll('.banner-slide');
+  const canSelectPrevious = slides.length > 2;
+
+  if (slides.length < 1) {
+    return;
+  }
+  
+  if (slides.length === 1) {
+    // hide the previous and next button
+    sliderElement.querySelector('.previous-button').remove();
+    sliderElement.querySelector('.next-button').remove();
+    slides[0].classList.add('active');
+    return;
+  }
+  
+  if (!canSelectPrevious) {
+    sliderElement.querySelector('.previous-button').remove();
+  } 
 
   // Set automatic transition to next slide every 5 seconds
   let slideTimer; 
@@ -35,14 +52,14 @@ function initialiseSlider(sliderElement) {
     // Remove classes from current relative slides
     var currentSlide = slides[currentSlideIndex];
     currentSlide.classList.remove('active');
-    slides[previousSlideIndex].classList.remove('previous');
-    slides[nextSlideIndex].classList.remove('next');
+    slides[previousSlideIndex].classList.remove('previous', 'out-previous', 'out-next');
+    slides[nextSlideIndex].classList.remove('next', 'out-previous', 'out-next');
 
     clearInterval(slideTimer);
     slideTimer = setInterval(() => transitionSlide(1), 5000);
 
     if (direction !== 0) {
-      var outClass = direction === -1 ? 'out-previous' : 'out-next';
+      var outClass = direction === -1 && canSelectPrevious ? 'out-previous' : 'out-next';
       currentSlide.classList.add(outClass);  
       setTimeout(() => currentSlide.classList.remove(outClass), 500);
     }
@@ -54,13 +71,16 @@ function initialiseSlider(sliderElement) {
 
     // Set classes for the new relative slides
     slides[currentSlideIndex].classList.add('active');
-    slides[previousSlideIndex].classList.add('previous');
     slides[nextSlideIndex].classList.add('next');
+    
+    if (canSelectPrevious) {
+      slides[previousSlideIndex].classList.add('previous');
+    }
   }
 
   // Add event listeners to navigate slides
-  sliderElement.querySelector('.previous-button').addEventListener('click', () => transitionSlide(-1));
-  sliderElement.querySelector('.next-button').addEventListener('click', () => transitionSlide(1));
+  sliderElement.querySelector('.previous-button')?.addEventListener('click', () => transitionSlide(-1));
+  sliderElement.querySelector('.next-button')?.addEventListener('click', () => transitionSlide(1));
 }
 
 function populateImageContentBlock() {
