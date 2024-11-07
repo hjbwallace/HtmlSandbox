@@ -10,6 +10,57 @@ const data = {
 
 function initialise() {
   populateImageContentBlock();
+  initialiseSlider();
+}
+
+function initialiseSlider() {
+  const slides = document.querySelectorAll('.banner-slide');
+
+  // Set automatic transition to next slide every 5 seconds
+  let slideTimer; 
+
+  let currentSlideIndex = 0;
+  let previousSlideIndex = 0;
+  let nextSlideIndex = 0;
+
+  // Initialize the first slide as active
+  transitionSlide(0);
+
+  function transitionSlide(direction) {
+    // Remove classes from current relative slides
+    var currentSlide = slides[currentSlideIndex];
+    currentSlide.classList.remove('active');
+    slides[previousSlideIndex].classList.remove('previous');
+    slides[nextSlideIndex].classList.remove('next');
+
+    clearInterval(slideTimer);
+    slideTimer = setInterval(() => transitionSlide(1), 5000);
+
+    if (direction !== 0) {
+      var outClass = direction === -1 ? 'out-previous' : 'out-next';
+      currentSlide.classList.add(outClass);  
+      setTimeout(() => currentSlide.classList.remove(outClass), 500);
+    }
+    
+    // Calculate the index of the slides after the transition
+    currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
+    previousSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    nextSlideIndex = (currentSlideIndex + 1 + slides.length) % slides.length;
+
+    // Set classes for the new relative slides
+    slides[currentSlideIndex].classList.add('active');
+    slides[previousSlideIndex].classList.add('previous');
+    slides[nextSlideIndex].classList.add('next');
+  }
+
+  // Add event listeners to navigate slides
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('previous-button')) {
+      transitionSlide(-1);
+    } else if (e.target.classList.contains('next-button')) {
+      transitionSlide(1);
+    }
+  });
 }
 
 function populateImageContentBlock() {

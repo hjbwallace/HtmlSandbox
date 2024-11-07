@@ -228,3 +228,50 @@ section {
 }
 
 /*#endregion*/
+
+/* #region Slider */
+
+.banner-slider {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.banner-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  opacity: 0;
+  padding: 1rem;
+}
+
+.banner-slide.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.banner-slide.previous {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.banner-slide.next {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.banner-slide.out-next {
+  transform: translateX(-100%);
+  opacity: 1;
+}
+
+.banner-slide.out-previous {
+  transform: translateX(100%);
+  opacity: 1;
+}
+
+/*#endregion*/
