@@ -10,11 +10,16 @@ const data = {
 
 function initialise() {
   populateImageContentBlock();
-  initialiseSlider();
+  initialiseSliders();
 }
 
-function initialiseSlider() {
-  const slides = document.querySelectorAll('.banner-slide');
+function initialiseSliders() {
+  const sliders = document.querySelectorAll('.banner-slider');
+  sliders.forEach(slider => initialiseSlider(slider));
+}
+
+function initialiseSlider(sliderElement) {
+  const slides = sliderElement.querySelectorAll('.banner-slide');
 
   // Set automatic transition to next slide every 5 seconds
   let slideTimer; 
@@ -54,13 +59,8 @@ function initialiseSlider() {
   }
 
   // Add event listeners to navigate slides
-  document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('previous-button')) {
-      transitionSlide(-1);
-    } else if (e.target.classList.contains('next-button')) {
-      transitionSlide(1);
-    }
-  });
+  sliderElement.querySelector('.previous-button').addEventListener('click', () => transitionSlide(-1));
+  sliderElement.querySelector('.next-button').addEventListener('click', () => transitionSlide(1));
 }
 
 function populateImageContentBlock() {

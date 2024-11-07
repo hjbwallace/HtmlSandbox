@@ -238,6 +238,13 @@ section {
   overflow: hidden;
 }
 
+.banner-buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
 .banner-slide {
   position: absolute;
   top: 0;
