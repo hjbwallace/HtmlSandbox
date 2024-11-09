@@ -11,6 +11,7 @@ const data = {
 function initialise() {
   populateImageContentBlock();
   initialiseSliders();
+  initialiseCarousels();
 }
 
 function initialiseSliders() {
@@ -117,6 +118,48 @@ function populateElementsAttribute(className, attribute, content, isStyle = fals
     : element => isStyle ? element.style[attribute] = content : element[attribute] = content;
 
   Array.prototype.forEach.call(elements, updateFunc);
+}
+
+function initialiseCarousels() {
+  const carousels = document.querySelectorAll('.carousel');
+  carousels.forEach(initialiseCarousel);
+}
+
+function initialiseCarousel(carousel) {
+  function modulo(number, mod) {
+    let result = number % mod;
+    if (result < 0) {
+      result += mod;
+    }
+    return result;
+  }
+
+  function handleNext() {
+    currentSlide = modulo(currentSlide + 1, numSlides);
+    changeSlide(currentSlide);
+  }
+
+  function handlePrevious() {
+    currentSlide = modulo(currentSlide - 1, numSlides);
+    changeSlide(currentSlide);
+  }
+
+  function changeSlide(slideNumber) {
+    carousel.style.setProperty('--current-slide', slideNumber);
+  }
+
+  // get elements
+  const buttonPrevious = carousel.querySelector('.carousel-button-previous');
+  const buttonNext = carousel.querySelector('.carousel-button-next');
+  const slidesElement = carousel.querySelector('.carousel-slides');
+
+  // carousel state
+  let currentSlide = 0;
+  const numSlides = slidesElement.children.length;
+
+  // set up events
+  buttonPrevious.addEventListener('click', handlePrevious);
+  buttonNext.addEventListener('click', handleNext);
 }
 
 window.onload = initialise;
