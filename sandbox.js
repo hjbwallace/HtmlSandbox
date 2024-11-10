@@ -135,31 +135,58 @@ function initialiseCarousel(carousel) {
   }
 
   function handleNext() {
-    currentSlide = modulo(currentSlide + 1, numSlides);
-    changeSlide(currentSlide);
+    var index = modulo(currentSlide + 1, numSlides);
+    changeSlide(index);
   }
 
   function handlePrevious() {
-    currentSlide = modulo(currentSlide - 1, numSlides);
-    changeSlide(currentSlide);
+    var index = modulo(currentSlide - 1, numSlides);
+    changeSlide(index);
   }
 
-  function changeSlide(slideNumber) {
-    carousel.style.setProperty('--current-slide', slideNumber);
+  function changeSlide(index) {
+    indicators[currentSlide].classList.remove('active');
+
+    currentSlide = index;
+    carousel.style.setProperty('--current-slide', index);
+
+    clearInterval(slideTimer);
+    slideTimer = setInterval(handleNext, 5000);
+    indicators[index].classList.add('active');
+  }
+
+  function createIndicator(indicatorsElement, index) {
+    const indicator = document.createElement('button');
+    indicatorsElement.appendChild(indicator);
+
+    indicator.classList.add('carousel-indicator');
+    indicator.textContent = index + 1;
+    indicator.addEventListener('click', () => changeSlide(index));
+    return indicator;
   }
 
   // get elements
   const buttonPrevious = carousel.querySelector('.carousel-button-previous');
   const buttonNext = carousel.querySelector('.carousel-button-next');
   const slidesElement = carousel.querySelector('.carousel-slides');
+  const indicatorsElement = carousel.querySelector('.carousel-indicators');
 
   // carousel state
   let currentSlide = 0;
+  let slideTimer; 
   const numSlides = slidesElement.children.length;
 
   // set up events
   buttonPrevious.addEventListener('click', handlePrevious);
   buttonNext.addEventListener('click', handleNext);
+
+  // set up indicators
+  for (let i = 0; i < numSlides; i++) {
+    createIndicator(indicatorsElement, i);
+  }
+  const indicators = indicatorsElement.querySelectorAll('.carousel-indicator');
+
+  changeSlide(0);
 }
 
 window.onload = initialise;
