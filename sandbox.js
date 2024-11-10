@@ -160,7 +160,6 @@ function initialiseCarousel(carousel) {
     indicatorsElement.appendChild(indicator);
 
     indicator.classList.add('carousel-indicator');
-    indicator.textContent = index + 1;
     indicator.addEventListener('click', () => changeSlide(index));
     return indicator;
   }
