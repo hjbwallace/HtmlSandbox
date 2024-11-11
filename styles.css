@@ -291,11 +291,29 @@ section {
   overflow: hidden;
 }
 
-.carousel-buttons {
+.carousel-button {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.carousel-button-next {
+  right: 0;
 }
 
 .carousel-indicators {
@@ -319,7 +337,11 @@ section {
 }
 
 .carousel-indicator.active {
-  background-color: rgba(255, 255, 255, 8);
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.carousel-indicator:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .carousel-slides {
@@ -330,6 +352,8 @@ section {
 
 .carousel-slide {
   flex: 0 0 100%;
+  text-align: center;
+  height: 150px;
 }
 
 /*#endregion*/
