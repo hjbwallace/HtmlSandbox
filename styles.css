@@ -14,6 +14,9 @@ section {
   padding: 1rem;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* #region Image Content Block */
@@ -73,6 +76,66 @@ section {
     grid-column: 1;
     grid-row: 2;
   }
+}
+
+/*#endregion*/
+
+/* #region Variable Content Block */
+
+.variable-content-block {
+  display: grid;
+  
+  column-gap: 10px;
+  row-gap: 10px;
+  justify-items: left;
+  align-items: center;
+  max-width: 400px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.variable-content-block img {
+  grid-area: image;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.variable-content-block h3 {
+  grid-area: heading;
+}
+
+.variable-content-block p {
+  grid-area: text;
+  text-align: j;
+}
+
+.variable-content-block button {
+  grid-area: button;
+  max-width: none;
+}
+
+.variable-content-block.stack {
+  grid-template: 
+            "image" auto
+            "heading" auto
+            "text" auto
+            "button" auto;
+}
+
+.variable-content-block.heading-icon {
+  grid-template: 
+            "image heading" auto
+            "text text" 1fr
+            "button button" auto / 60px 1fr;
+}
+
+.variable-content-block.side-icon {
+  grid-template: 
+            "image heading" auto
+            "image text" auto
+            "image button" auto / 2fr 3fr;
 }
 
 /*#endregion*/
