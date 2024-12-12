@@ -3,14 +3,43 @@
   <head>
     <script src="sandbox.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <script src="navbar/navbar.js"></script>
+    <link rel="stylesheet" type="text/css" href="navbar/navbar.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Sandbox</title>
   </head>
   <body>
     <main>
+
+      <nav class="navbar" id="navbar">
+        <div class="icon">
+          <a href="#home">
+            <img src="assets/icon.png" alt="Logo" />
+          </a>
+        </div>
+        <div class="content">
+          <ul>
+            <li><a href="#info-banner">Banner</a></li>
+            <li><a href="#carousel">Carousel</a></li>
+            <li><a href="#banner-slider">Banner Slider</a></li>
+            <li><a href="#image-content-block">Image Content Block</a></li>
+            <li><a href="#variable-content-block">Variable Content Block</a></li>
+            <li><a href="#simple-table">Simple Table</a></li>
+            <li><a href="#fancy-table">Fancy Table</a></li>
+          </ul>
+        </div>
+        <div class="toggle">
+          <button onclick="toggleNavbar()">&#9776;</button>
+        </div>
+      </nav>
+
       <h1>HTML Sandbox</h1>
 
-      <section>
+      <section id="info-banner">
         <h2>Info Banner</h2>
         <div class="info-banner">
           <div class="info-banner-image data-banner-background"></div>
@@ -22,7 +51,7 @@
         </div>
       </section>
 
-      <section>
+      <section id="carousel">
         <h2>Carousel</h2>
         <div class="carousel">
           <div class="carousel-slides">
@@ -51,7 +80,7 @@
         </div>
       </section>
 
-      <section>
+      <section id="banner-slider">
         <h2>Banner Slider - 5 Slides</h2>
         <div class="banner-slider">
           <div class="banner-slide" style="background-color: lightcoral;">
@@ -109,12 +138,12 @@
         </div>
       </section>
 
-      <section>
+      <section id="image-content-block">
         <h2>Image Content Block</h2>
         <p>Show an image to the left or right of some text</p>
         <p>Add 'image-content-block-right' to the div to show the image on the right</p>
 
-        <div id="image-content-block" class="image-content-block">
+        <div class="image-content-block">
           <img id="image-content-block-image" class="image-content-block-image data-image" />
           <div class="image-content-block-content">
             <div class="image-content-block-content-heading">
@@ -127,8 +156,8 @@
         </div>
       </section>
 
-      <section>
-        <h2>Variable Image Content Block</h2>
+      <section id="variable-content-block">
+        <h2>Variable Content Block</h2>
 
         <div class="variable-content-block stack">
           <img class="data-icon" />
@@ -152,7 +181,7 @@
         </div>
       </section>
 
-      <section>
+      <section id="simple-table">
         <h2>Normal Table</h2>
 
         <table class="simple-table">
@@ -203,7 +232,7 @@
 
       </section>
 
-      <section>
+      <section id="fancy-table">
         <h2>Fancy Table</h2>
 
         <div class="fancy-table">
