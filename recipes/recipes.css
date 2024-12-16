@@ -1,0 +1,36 @@
+:root {
+  --recipes-primary: lightblue;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.recipes-navbar {
+  margin: 0px;
+  background-color: var(--recipes-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    vertical-align: middle;
+    max-width: 42px;
+    max-height: 42px;
+  }
+
+  form {
+    display: flex;
+
+    input {
+      flex-grow: 1;
+    }
+  }
+
+  .navbar-content {
+    flex-grow: 1;
+    max-width: 600px;
+    margin: 0 10px;
+  }
+}
