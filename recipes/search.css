@@ -10,6 +10,11 @@
   align-items: center;
   gap: 16px;
 
+  a.card {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .card {
     width: 200px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
@@ -19,12 +24,24 @@
     .header {
       background-color: lightblue;
       aspect-ratio: 3/2;
+      overflow: hidden;
+      transition: filter 0.2s ease-in-out;
+
+      &:hover {
+        filter: brightness(1.1);
+      }
   
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         vertical-align: middle;
+        transition: 0.2s all ease-in-out;
+
+        &:hover {
+          
+          transform: scale(1.05);
+        }
       }
     }
   
