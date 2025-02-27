@@ -1,0 +1,150 @@
+main {
+  background-color: #fcfbfe;
+}
+
+.recipe {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.recipe-header {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  width: 100%;
+  background-color: lightblue;
+  min-height: 160px;
+
+  img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    vertical-align: middle;
+  }
+
+  span {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    background-color: lightcoral;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 8px;
+    text-shadow: 1px 1px 0 #000;
+  }
+}
+
+.recipe-content {
+  margin-top: -20px;
+  border-radius: 20px 20px 0px 0px;
+  overflow: hidden;
+  background-color: #fcfbfe;
+  position: relative;
+  line-height: 1.5;
+
+  > * {
+    padding: 0px 20px 0px 20px;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  .title {
+    overflow: hidden;
+    background-color: mediumpurple;
+    color: white;
+    text-shadow: 1px 1px #000;
+  }
+  
+  .metadata {
+    
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    li {
+      float: left;
+      margin-right: 8px;
+    }
+
+    .tags {
+      li {
+        font-size: small;
+        background-color: lightgreen;
+        padding: 4px 8px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .content {
+    ol, ul {
+      counter-reset: item;
+      list-style-type: none;
+      padding: 0px;
+    
+      li {
+        counter-increment: item;
+        padding-bottom: 4px;
+      }
+
+      li::before {
+        color: mediumpurple;
+        margin-right: 12px;
+      }
+    }
+    
+    ol {
+      li::before {
+        content: counter(item, decimal-leading-zero) "";
+        font-weight: bold;
+      }
+    }
+    
+    ul {
+      li:not(.heading) {
+        &::before {
+          content: "\2610" " ";
+          cursor: pointer;
+        }
+      
+        &.clicked::before {
+          content: "\2611" " ";
+        }
+      }
+      li.heading {
+        font-weight: bold;
+
+        &:not(:first-child) {
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+      margin-top: 0px;
+      border-radius: 0px;
+
+      .content {
+        display: flex;
+
+        .ingredients {
+          flex: 1;
+          padding-right: 12px;
+        }
+
+        .steps {
+          flex: 2;
+          padding-left: 12px;
+        }
+      }
+  }
+}

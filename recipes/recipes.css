@@ -1,15 +1,16 @@
 :root {
-  --recipes-primary: lightblue;
+  --recipes-primary: mediumpurple;
 }
 
 body {
   margin: 0px;
   padding: 0px;
+  font-family: Arial, sans-serif;
 }
 
 .recipes-navbar {
   margin: 0px;
-  background-color: var(--recipes-primary);
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
