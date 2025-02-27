@@ -186,6 +186,18 @@ section {
 
 /*#endregion*/
 
+/* #region Image Banner */
+
+.image-banner {
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  max-height: 600px;
+  width: 100%;
+}
+
+/*#endregion*/
+
 /* #region Simple Table */
 
 .simple-table {
